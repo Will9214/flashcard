@@ -1,13 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { addFlashCard } from "../redux/flashcards/flashcardActions";
 
 
 function AddFlashcards() {
-  const [flashcardName, setFlashcardName] = useState("");
-  const [flashcardInfo, setFlashcardInfo] = useState("");
+  const dispatch = useAppDispatch();
+  const { loading } = useAppSelector(state => state.flashcardReducer);
+
+
+  const [showSuccessfulAdd, setShowSuccessfulAdd] = useState(false);
+  
 
   const handleAddFlashcard = (e: any) => {
+    e.preventDefault();
+    const flashcardData = new FormData(e.target);
+    const flashcardObject = Object.fromEntries(flashcardData.entries());
     
+    dispatch(addFlashCard(flashcardObject));
+
+    e.currentTarget[0].value = "";
+    e.currentTarget[1].value = "";
+
+    if (!loading) {
+      setShowSuccessfulAdd(true);
+      setTimeout(() => {
+        setShowSuccessfulAdd(false);
+      }, 3000);
+    }
   }
 
   return (
@@ -16,15 +36,20 @@ function AddFlashcards() {
         <NameInput>
           <NameInputLabel>Enter Flashcard Name:
           </NameInputLabel>
-          <input name="flashcardName" />
+          <input type="text" name="name" placeholder="Enter Flashcard Name"/>
         </NameInput>
         <InfoInput>
           <InfoInputLabel>Enter Flashcard Information:</InfoInputLabel>
-          <textarea name="flashcardInfo" />
+          <textarea name="info" placeholder="Enter Flashcard Info"/>
         </InfoInput>
-        <button>Save</button>
+        <button type="submit">Save</button>
         <a href="/manage" style={{ padding: "6.7px 10px", marginLeft: "15%" }}>Back</a>
       </form>
+      {showSuccessfulAdd ? (
+        <AddSuccess>&#10003; Successfully Added Flashcard!</AddSuccess>
+      ) : (
+        <></>
+      )}
 
     </AddFlashcardsElement>
   )
@@ -65,4 +90,12 @@ const InfoInputLabel = styled.div`
   @media (max-width: 576px) {
     margin-left: 18%;
   }
+`;
+
+const AddSuccess = styled.div`
+  margin: 20px 0;
+  margin-left: 30%;
+  font-weight: 700;
+  width: fit-content;
+  color: green;
 `;

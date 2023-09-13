@@ -15,9 +15,9 @@ input {
 
 textarea {
   width: 40%;
-  padding: 0 0.75rem;
+  padding: 0.375rem 0.75rem;
   font-size: 1rem;
-  line-height: 4;
+  height: 100px;
   border-radius: 8px;
   border: 1px solid;
 }

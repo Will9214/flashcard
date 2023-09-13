@@ -23,3 +23,23 @@ export const getFlashcards = createAsyncThunk(
     }
   }
 );
+
+export const addFlashCard = createAsyncThunk(
+  "/api/addFlashcard",
+  async (data: any) => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      await axios.post(
+        `${backendURL}/api/addFlashcard`,
+        data,
+        config
+      );
+    } catch (error) {
+      return error;
+    }
+  }
+)

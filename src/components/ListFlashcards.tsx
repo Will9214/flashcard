@@ -63,8 +63,6 @@ const ShowButton = styled.div`
   width: fit-content;
   padding-left: 10px;
   font-weight: 600;
-  position: relative;
-  bottom: 0;
   
   &:hover {
     cursor: pointer;

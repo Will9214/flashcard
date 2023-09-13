@@ -17,17 +17,17 @@ function ManageFlashcards() {
 
   const { flashcards } = useAppSelector(state => state.flashcardReducer);
 
-  const renderFlashcards = () => {
-    if (flashcards) {
-      return flashcards.map((flashcard) => (
-        <div key={flashcard["_id"]}>
-          <div style={{ paddingBottom: "5px" }}><strong>Name: </strong>{flashcard["name"]}</div>
-          <div><strong>Info: </strong>{flashcard["info"]}</div>
-          <hr />
-        </div>
-      ))
-    }
-  }
+  // const renderFlashcards = () => {
+  //   if (flashcards) {
+  //     return flashcards.map((flashcard) => (
+  //       <div key={flashcard["_id"]}>
+  //         <div style={{ paddingBottom: "5px" }}><strong>Name: </strong>{flashcard["name"]}</div>
+  //         <div><strong>Info: </strong>{flashcard["info"]}</div>
+  //         <hr />
+  //       </div>
+  //     ))
+  //   }
+  // }
 
   const handleHomeClick = (): void => {
     window.location.pathname = "/";
