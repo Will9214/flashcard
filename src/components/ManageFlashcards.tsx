@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getFlashcards } from "../redux/flashcards/flashcardActions";
 import { AppDispatch, RootState } from "../redux/store";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import ListFlashcards from "./ListFlashcards";
 
 
 
@@ -19,11 +20,11 @@ function ManageFlashcards() {
   const renderFlashcards = () => {
     if (flashcards) {
       return flashcards.map((flashcard) => (
-        <FlashcardList key={flashcard["_id"]}>
+        <div key={flashcard["_id"]}>
           <div style={{ paddingBottom: "5px" }}><strong>Name: </strong>{flashcard["name"]}</div>
           <div><strong>Info: </strong>{flashcard["info"]}</div>
           <hr />
-        </FlashcardList>
+        </div>
       ))
     }
   }
@@ -34,11 +35,17 @@ function ManageFlashcards() {
 
   return (
     <ManageElement>
-      <ListTitle>Flashcards
 
+      <ListTitle>Flashcards
         <HomeButton onClick={handleHomeClick}>Home</HomeButton>
       </ListTitle>
-      {renderFlashcards()}
+
+      <FlashcardList>
+        {flashcards.map((flashcard, i) => (
+          <ListFlashcards key={i} name={flashcard["name"]} info={flashcard["info"]} />
+        ))}
+      </FlashcardList>
+
       <a href="/manage/add" style={{ padding: "5px 10px" }}>Add</a>
 
     </ManageElement>
