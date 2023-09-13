@@ -1,6 +1,32 @@
+import { useEffect } from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { getFlashcards } from "../redux/flashcards/flashcardActions";
+import { AppDispatch, RootState } from "../redux/store";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+
+
 
 function ManageFlashcards() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getFlashcards());
+  }, []);
+
+  const { flashcards } = useAppSelector(state => state.flashcardReducer);
+
+  const renderFlashcards = () => {
+    if (flashcards) {
+      return flashcards.map((flashcard) => (
+        <FlashcardList key={flashcard["_id"]}>
+          <div style={{ paddingBottom: "5px" }}><strong>Name: </strong>{flashcard["name"]}</div>
+          <div><strong>Info: </strong>{flashcard["info"]}</div>
+          <hr />
+        </FlashcardList>
+      ))
+    }
+  }
 
   const handleHomeClick = (): void => {
     window.location.pathname = "/";
@@ -12,11 +38,7 @@ function ManageFlashcards() {
 
         <HomeButton onClick={handleHomeClick}>Home</HomeButton>
       </ListTitle>
-      <FlashcardList>
-        <div style={{ paddingBottom: "5px" }}><strong>Name: </strong>JavaScript</div>
-        <div><strong>Info: </strong>A programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS. JavaScript is a high-level, often just-in-time compiled language that conforms to the ECMAScript standard. It has dynamic typing, prototype-based object-orientation, and first-class functions. It is multi-paradigm, supporting event-driven, functional, and imperative programming styles. It has application programming interfaces (APIs) for working with text, dates, regular expressions, standard data structures, and the Document Object Model (DOM).</div>
-        <hr />
-      </FlashcardList>
+      {renderFlashcards()}
       <a href="/manage/add" style={{ padding: "5px 10px" }}>Add</a>
 
     </ManageElement>
