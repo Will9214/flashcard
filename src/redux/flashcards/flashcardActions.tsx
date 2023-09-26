@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const backendURL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
+const backendURL = process.env.REACT_APP_BACKEND_URL;
 
 export const getFlashcards = createAsyncThunk(
   "/api/getFlashcards",

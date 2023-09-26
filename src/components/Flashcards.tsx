@@ -71,12 +71,13 @@ const ParentElement = styled.div`
 `;
 
 const ButtonElement = styled.div`
-  margin-top: 50%;
+  margin-top: 40px;
   margin-bottom: 40px;
   width: 30%;
   padding-right: 5%;
 
   @media (max-width: 576px) {
+    margin-top: 50%;
     margin-bottom: 0;
     padding-right: 0;
   }
