@@ -24,7 +24,10 @@ function ListFlashcards({ name, info }: PropType) {
             <>
               <AllInfo>
                 <strong>Info: </strong>
-                {info}
+                <br />
+                <Info>
+                  {info}
+                </Info>
               </AllInfo>
               <ShowButton onClick={handleShowLessClick}>Show Less</ShowButton>
             </>
@@ -49,6 +52,11 @@ export default ListFlashcards;
 
 const AllInfo = styled.div`
   width: 90%;
+  white-space: pre-wrap;
+`;
+
+const Info = styled.div`
+  padding: 10px 30px;
 `;
 
 const TruncatedInfo = styled.div`

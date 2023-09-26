@@ -1,10 +1,10 @@
 import './App.css';
 import Flashcards from './components/Flashcards';
-import AddFlashcards from './components/AddFlashcards';
+import AddFlashcards from './components/ManageFlashcards/AddFlashcards';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Route from './components/Route';
-import ManageFlashcards from './components/ManageFlashcards';
+import ManageFlashcards from './components/ManageFlashcards/ManageFlashcards';
 
 function App() {
   return (

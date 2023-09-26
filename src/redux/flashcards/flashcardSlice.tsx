@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "../store";
-import { addFlashCard, getFlashcards } from "./flashcardActions"
+import { addFlashCard, getFlashcards, getRandomFlashcard } from "./flashcardActions"
 
 // Define type for the slice state
 interface FlashcardState {
   flashcards: [],
+  randomFlashcard: {},
   loading: boolean,
   error: any,
 }
@@ -13,6 +14,7 @@ interface FlashcardState {
 // Define initial state with the type above
 const initialState: FlashcardState = {
   flashcards: [],
+  randomFlashcard: {},
   loading: false,
   error: null,
 }
@@ -45,7 +47,19 @@ export const flashcardSlice = createSlice({
     builder.addCase(addFlashCard.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error.message || null;
-    })
+    });
+    builder.addCase(getRandomFlashcard.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(getRandomFlashcard.fulfilled, (state, action) => {
+      state.randomFlashcard = action.payload.randomFlashcard[0];
+      state.loading = false;
+      state.error = null;
+    });
+    builder.addCase(getRandomFlashcard.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message || null;
+    });
   },
 });
 

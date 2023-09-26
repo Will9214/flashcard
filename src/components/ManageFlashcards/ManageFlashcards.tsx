@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { getFlashcards } from "../redux/flashcards/flashcardActions";
-import { AppDispatch, RootState } from "../redux/store";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { getFlashcards } from "../../redux/flashcards/flashcardActions";
+import { AppDispatch, RootState } from "../../redux/store";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import ListFlashcards from "./ListFlashcards";
 
 
@@ -41,8 +41,8 @@ function ManageFlashcards() {
       </ListTitle>
 
       <FlashcardList>
-        {flashcards.map((flashcard, i) => (
-          <ListFlashcards key={i} name={flashcard["name"]} info={flashcard["info"]} />
+        {flashcards.map((flashcard: any, i) => (
+          <ListFlashcards key={i} name={flashcard.name} info={flashcard.info} />
         ))}
       </FlashcardList>
 

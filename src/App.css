@@ -35,6 +35,12 @@ button {
   text-decoration: none;
 }
 
+a:hover,
+button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px black;
+}
+
 @media (max-width: 576px) {
   input {
     width: 60%;

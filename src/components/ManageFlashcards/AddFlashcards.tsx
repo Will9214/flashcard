@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { addFlashCard } from "../redux/flashcards/flashcardActions";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { addFlashCard } from "../../redux/flashcards/flashcardActions";
 
 
 function AddFlashcards() {

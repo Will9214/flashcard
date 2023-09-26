@@ -15,6 +15,7 @@ const HeaderElement = styled.div`
   border-bottom: 8px solid;
 
   @media (max-width: 576px) {
-    padding: 10px 0;
+    padding: 5px 0;
+    font-size: 4rem;
   }
 `;
