@@ -52,7 +52,7 @@ function Flashcards() {
       <ButtonElement>
         <Button onClick={handleNewCardClick}>New Card</Button>
         
-        <Button onClick={handleRevealInfoClick}>Reveal</Button>
+        <Button onClick={handleRevealInfoClick}>Reveal Card</Button>
       </ButtonElement>
     </ParentElement>
   )
@@ -132,7 +132,7 @@ const FlashcardName = styled.div`
 
   @media (max-width: 576px) {
     width: 70%;
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding: 5px 0;
   }
 `;
@@ -152,5 +152,6 @@ const FlashcardInfo = styled.div`
     width: 85%;
     margin: auto;
     padding: 5px 5px;
+    font-size: 1rem;
   }
 `;
