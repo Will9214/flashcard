@@ -1,6 +1,5 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { configure } from "@testing-library/react";
 
 const backendURL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
 
@@ -42,7 +41,7 @@ export const addFlashCard = createAsyncThunk(
       return error;
     }
   }
-)
+);
 
 export const getRandomFlashcard = createAsyncThunk(
   "/api/getRandomFlashcard",
@@ -62,4 +61,4 @@ export const getRandomFlashcard = createAsyncThunk(
       return error;
     }
   }
-)
+);

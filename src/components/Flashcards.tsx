@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { getRandomFlashcard } from "../redux/flashcards/flashcardActions";
 import { useEffect, useState } from "react";
 
+// Need to figure out. Trying to set up typescript for randomFlashcard from useAppSelector. 
 interface RandomFlashcardProps {
   _id: string,
   name: string,
@@ -34,10 +35,9 @@ function Flashcards() {
       <FlashcardElement>
         
         <FlashcardName>
-          {/* FULL STACK DEVELOPER */}
           {randomFlashcard.name}
         </FlashcardName>
-        {/* <FlashcardInfo>A developer or engineer who can build both the frontend and the backend of a website. </FlashcardInfo> */}
+  
         {showFlashcardInfo ? (
           <FlashcardInfo>
             {randomFlashcard.info}

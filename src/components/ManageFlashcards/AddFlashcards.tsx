@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { addFlashCard } from "../../redux/flashcards/flashcardActions";
@@ -6,12 +6,11 @@ import { addFlashCard } from "../../redux/flashcards/flashcardActions";
 
 function AddFlashcards() {
   const dispatch = useAppDispatch();
+  
+  // Need to work on this. Trying to display a message to user that the flashcard was added successfully. 
   const { loading } = useAppSelector(state => state.flashcardReducer);
-
-
   const [showSuccessfulAdd, setShowSuccessfulAdd] = useState(false);
   
-
   const handleAddFlashcard = (e: any) => {
     e.preventDefault();
     const flashcardData = new FormData(e.target);
