@@ -18,25 +18,32 @@ function Flashcards() {
   }, []);
 
   const [showFlashcardInfo, setShowFlashcardInfo] = useState(false);
-
+  
   const handleNewCardClick = () => {
     dispatch(getRandomFlashcard());
     setShowFlashcardInfo(false);
   };
-
+  
   const handleRevealInfoClick = () => {
     setShowFlashcardInfo(true);
   }
-
+  
+  const { loading }: any = useAppSelector(state => state.flashcardReducer)
   const { randomFlashcard }: any = useAppSelector(state => state.flashcardReducer)
 
   return(
     <ParentElement>
       <FlashcardElement>
-        
-        <FlashcardName>
-          {randomFlashcard.name}
-        </FlashcardName>
+
+        {loading ? (
+          <FlashcardName>
+            <Spinner />
+          </FlashcardName>
+        ) : (
+          <FlashcardName>
+            {randomFlashcard.name}
+          </FlashcardName>
+        )}
   
         {showFlashcardInfo ? (
           <FlashcardInfo>
@@ -153,5 +160,20 @@ const FlashcardInfo = styled.div`
     margin: auto;
     padding: 5px 5px;
     font-size: 1rem;
+  }
+`;
+
+const Spinner = styled.div`
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid black;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  margin: auto;
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 `;
